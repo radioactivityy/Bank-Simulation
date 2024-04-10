@@ -1,10 +1,15 @@
 ﻿#include "Account.h"
 
-int Account::nextNumber = 0; 
+int Account::objectCount = 0;
+
+int Account::GetObjectsCount() {
+    return Account::objectCount;
+}
+
 Account::Account(const Client* owner, double interestRate, const Client* partner)
     : owner(owner), interestRate(interestRate), partner(partner) {
-    this->number = ++nextNumber;
-    this->balance = 0.0; 
+    this->balance = 0.0;
+    Account::objectCount += 1;
 }
 
 void Account::deposit(double amount) {
@@ -37,4 +42,8 @@ const Client* Account::getOwner() const {
 
 const Client* Account::getPartner() const {
     return this->partner;
+}
+
+Account::~Account() {
+    Account::objectCount -= 1;
 }
