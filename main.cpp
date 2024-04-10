@@ -12,9 +12,8 @@ int main() {
     Account* kateAccount = bank.addAccount(kate, 0.03); 
     Account* dalenAccount = bank.addAccount(dalen, 0.02, kate); 
 
-    kateAccount->deposit(1000);
-    kateAccount->withdraw(200);
-    dalenAccount->deposit(5000);
+    kateAccount->withdraw(1000);
+    dalenAccount->withdraw(5100);
     bank.addInterestToAllAccounts();
 
     std::cout << "Kate's account balance: $" << kateAccount->getBalance() << std::endl;
@@ -28,6 +27,8 @@ int main() {
         std::cout << "Dalen account owner: " << dalenAccount->getOwner()->getName() << std::endl;
         std::cout << "Dalen account partner : " << dalenAccount->getPartner()->getName() << std::endl;
     }
+
+    bank.deleteAccount(kate);
 
     return 0;
 }

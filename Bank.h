@@ -16,6 +16,8 @@ public:
     Client* addClient(const std::string& code, const std::string& name);
     Account* addAccount(const Client* owner, double interestRate, const Client* partner = nullptr);
     void addInterestToAllAccounts();
+    bool canDeleteAccount(const Client* client) const; // New method to check if account can be deleted
+    void deleteAccount(const Client* client); // Modified deleteAccount method
     
 };
 
